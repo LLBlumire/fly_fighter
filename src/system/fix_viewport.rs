@@ -1,7 +1,7 @@
 use bevy::{prelude::*, window::WindowResized};
 use crate::prelude::Viewport;
 
-pub fn adjust_screen_resize(
+pub fn fix_viewport(
     mut resized: EventReader<WindowResized>,
     mut camera: Query<(&mut OrthographicProjection, &Viewport)>,
 ) {

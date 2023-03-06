@@ -12,6 +12,12 @@ const BULLET_SPEED: f32 = 450.0;
 /// The minimum time between bullets from a fighter in seconds.
 const BULLET_CD: f32 = 1.0;
 
+/// The initial screen width and target viewport
+const SCREEN_WIDTH: f32 = 800.0;
+
+/// The initial screen height and target viewport
+const SCREEN_HEIGHT: f32 = 600.0;
+
 mod component;
 mod entity;
 mod system;
@@ -21,15 +27,12 @@ pub mod prelude {
     pub use crate::{
         component::{Bullet, Fighter, Gun, Kinematic, Player, Viewport},
         entity::{spawn_bullet, spawn_fighter},
-        system::{air_brake, fighter_death, kinematics, shoot, yaw},
+        system::{air_brake, fighter_death, fix_viewport, kinematics, shoot, yaw},
     };
 }
 
 use prelude::*;
-use system::adjust_screen_resize;
 
-const SCREEN_WIDTH: f32 = 800.0;
-const SCREEN_HEIGHT: f32 = 600.0;
 
 fn main() {
     App::new()
@@ -50,7 +53,7 @@ fn main() {
         .add_system(yaw)
         .add_system(shoot)
         .add_system(fighter_death)
-        .add_system(adjust_screen_resize)
+        .add_system(fix_viewport)
         .run();
 }
 

@@ -15,5 +15,5 @@ pub use shoot::shoot;
 mod fighter_death;
 pub use fighter_death::fighter_death;
 
-mod adjust_screen_resize;
-pub use adjust_screen_resize::adjust_screen_resize;
+mod fix_viewport;
+pub use fix_viewport::fix_viewport;
